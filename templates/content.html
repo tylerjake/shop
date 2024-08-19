@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Наполнение кнопок</h2>
+<form method="post">
+    <div class="form-group">
+        <label for="content1">{{ buttons.button1 }}:</label>
+        <textarea class="form-control" id="content1" name="content1" rows="4">{{ content.content1 }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="content2">{{ buttons.button2 }}:</label>
+        <textarea class="form-control" id="content2" name="content2" rows="4">{{ content.content2 }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="content3">{{ buttons.button3 }} (ссылка):</label>
+        <input type="text" class="form-control" id="content3" name="content3" value="{{ content.content3 }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+{% endblock %}

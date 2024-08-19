@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Добавление материалов после покупки</h2>
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="subbutton_name">Выберите под-кнопку:</label>
+        <select class="form-control" id="subbutton_name" name="subbutton_name">
+            {% for subbutton in buttons %}
+            <option value="{{ subbutton.name }}">{{ subbutton.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="purchase_text">Текст после покупки:</label>
+        <textarea class="form-control" id="purchase_text" name="purchase_text" rows="4"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="purchase_files">Файлы после покупки:</label>
+        <input type="file" class="form-control-file" id="purchase_files" name="purchase_files" multiple>
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+
+<h3>Текущие материалы после покупки</h3>
+{% for subbutton in buttons %}
+    <h4>{{ subbutton.name }}</h4>
+    {% if subbutton.purchase_data %}
+        <p>{{ subbutton.purchase_data.text }}</p>
+        <ul>
+            {% for file in subbutton.purchase_data.files %}
+            <li>
+                <a href="/{{ file }}">{{ file }}</a>
+                <form method="post" action="{{ url_for('delete_purchase_file', subbutton_index=loop.index0, file_index=loop.index0) }}" class="d-inline">
+                    <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет материалов</p>
+    {% endif %}
+{% endfor %}
+{% endblock %}
