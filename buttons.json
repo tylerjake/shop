@@ -1,0 +1,32 @@
+{
+    "button1": {
+        "id": "ready_bots",
+        "text": "Готовые боты"
+    },
+    "button2": {
+        "id": "custom_solutions",
+        "text": "Нестандартные решения"
+    },
+    "button3": {
+        "id": "make_order",
+        "text": "Сделать заказ"
+    },
+    "button1_subbuttons": [
+        {
+            "name": "Тестовый скрипт",
+            "content": "Пример тестового скрипта",
+            "files": [],
+            "buy_enabled": true,
+            "purchase_data": {
+                "text": "Спасибо за покупку!",
+                "files": [
+                    "uploads\\bot_id.rar"
+                ]
+            }
+        }
+    ],
+    "purchase_data": {
+        "text": "thx",
+        "files": []
+    }
+}
